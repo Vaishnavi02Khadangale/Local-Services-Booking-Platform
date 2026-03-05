@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Provider Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2>Provider Dashboard</h2>
+
+    <div id="jobs"></div>
+
+    <script>
+
+        let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+        let container = document.getElementById("jobs");
+
+        bookings.forEach((b, i) => {
+
+            let div = document.createElement("div");
+
+            div.innerHTML = `
+<p>Service: ${b.service}</p>
+<p>Status: ${b.status}</p>
+
+<button onclick="startJob(${i})">Start Job</button>
+<button onclick="completeJob(${i})">Complete Job</button>
+
+<hr>
+`;
+
+            container.appendChild(div);
+
+        });
+
+        function startJob(i) {
+
+            bookings[i].status = "In Progress";
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+            location.reload();
+
+        }
+
+        function completeJob(i) {
+
+            bookings[i].status = "Completed";
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+            location.reload();
+
+        }
+
+    </script>
+
+</body>
+
+</html>

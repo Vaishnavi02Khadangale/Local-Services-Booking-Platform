@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Booking Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        margin: 40px;
+    }
+
+    .booking {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px auto;
+        width: 300px;
+        text-align: left;
+    }
+
+    #bookingList {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /*adding some colors for status*/
+    .status-pending {
+        color: orange;
+    }
+
+    .status-confirmed {
+        color: green;
+    }
+
+    .status-cancelled {
+        color: red;
+    }
+
+    /*adding some border like cards*/
+    .booking {
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+</style>
+
+<body>
+
+    <h2>Your Bookings</h2>
+
+    <div id="bookingList"></div>
+
+    <style>
+        .status-pending {
+            color: orange;
+        }
+
+        .status-confirmed {
+            color: green;
+        }
+
+        .status-cancelled {
+            color: red;
+        }
+    </style>
+
+    <script>
+
+        let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+        let container = document.getElementById("bookingList");
+
+        bookings.forEach(function (b) {
+
+            let div = document.createElement("div");
+
+            div.innerHTML = `
+<p>Name: ${b.name}</p>
+<p>Service: ${b.service}</p>
+<p>Status: ${b.status}</p>
+<hr>
+`;
+
+            container.appendChild(div);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
