@@ -15,7 +15,7 @@ body {
 button {
     padding: 10px 20px;
     background: #007BFF;
-    color: white;
+    color: blue;
     border: none;
     cursor: pointer;
 }
@@ -28,4 +28,5 @@ input,
 textarea {
     padding: 8px;
     width: 250px;
+
 }
